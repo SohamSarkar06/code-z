@@ -51,7 +51,11 @@ whateverMan:
           setError("");
 
           try {
+<<<<<<< HEAD
             const res = await fetch("code-z-backend-production.up.railway.app", {
+=======
+            const res = await fetch("https://code-z-backend-production.up.railway.app", {
+>>>>>>> d9c9d2595c54a7aa852233aed83c8e16c732d685
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ code }),
