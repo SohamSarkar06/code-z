@@ -76,10 +76,10 @@ Code-Z = Python logic + Gen-Z dictionary 😈
 <span className="fn">yap</span>(<span className="str">"sum:"</span>, sum(nums))<br />
 <span className="fn">yap</span>(<span className="str">"avg:"</span>, avg(nums))<br />
 <span className="fn">yap</span>(<span className="str">"mid:"</span>, mid(nums))<br />
-<span className="fn">yap</span>(<span className="str">"rev:"</span>, rev(nums))<br />
-<span className="cm"># to sort array in ascending  order</span><br /><br />
-<span className="fn">yap</span>(sort.asc(nums))<br />
-<span className="cm"># to sort array in descending  order</span><br /><br />
+<span className="fn">yap</span>(<span className="str">"rev:"</span>, rev(nums))<br /><br />
+<span className="cm"># to sort array in ascending  order</span><br />
+<span className="fn">yap</span>(sort.asc(nums))<br /><br />
+<span className="cm"># to sort array in descending  order</span><br />
 <span className="fn">yap</span>(sort.desc(nums))<br />
 
 </pre>
