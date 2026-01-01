@@ -66,6 +66,19 @@ Code-Z = Python logic + Gen-Z dictionary 😈
 <span className="kw">lowkeyIf</span> result <span className="kw">givingSameVibeAs</span> <span className="num">10</span>:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;<span className="fn">yapln</span>(<span className="str">"math still works frfr"</span>)
         </pre>
+        <pre>
+<span className="cm"># Arrays (pullUp + helpers)</span><br /><br />
+
+<span className="kw">vibe</span> nums = <span className="fn">pullUp</span>([<span className="num">10</span>, <span className="num">20</span>, <span className="num">30</span>, <span className="num">40</span>, <span className="num">50</span>])<br /><br />
+
+<span className="fn">yap</span>(<span className="str">"min:"</span>, min(nums))<br />
+<span className="fn">yap</span>(<span className="str">"max:"</span>, Max(nums))<br />
+<span className="fn">yap</span>(<span className="str">"sum:"</span>, sum(nums))<br />
+<span className="fn">yap</span>(<span className="str">"avg:"</span>, avg(nums))<br />
+<span className="fn">yap</span>(<span className="str">"mid:"</span>, mid(nums))<br />
+<span className="fn">yap</span>(<span className="str">"rev:"</span>, rev(nums))
+</pre>
+
       </aside>
 
       {/* TOGGLE BUTTON – ALWAYS VISIBLE */}
