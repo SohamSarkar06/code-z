@@ -17,17 +17,21 @@ whateverMan:
   // 🔥 Update line numbers
   const updateLineNumbers = () => {
     const lines = code.split("\n").length;
-    gutterRef.current.textContent = Array.from(
-      { length: lines },
-      (_, i) => i + 1
-    ).join("\n");
+    if (gutterRef.current) {
+      gutterRef.current.textContent = Array.from(
+        { length: lines },
+        (_, i) => i + 1
+      ).join("\n");
+    }
   };
 
   useEffect(updateLineNumbers, [code]);
 
   // 🔥 PERFECT scroll sync
   const syncScroll = () => {
-    gutterRef.current.scrollTop = textareaRef.current.scrollTop;
+    if (gutterRef.current && textareaRef.current) {
+      gutterRef.current.scrollTop = textareaRef.current.scrollTop;
+    }
   };
 
   return (
@@ -51,24 +55,25 @@ whateverMan:
           setError("");
 
           try {
-<<<<<<< HEAD
-            const res = await fetch("code-z-backend-production.up.railway.app", {
-=======
-            const res = await fetch("https://code-z-backend-production.up.railway.app", {
->>>>>>> d9c9d2595c54a7aa852233aed83c8e16c732d685
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ code }),
-            });
+            const res = await fetch(
+              "https://code-z-backend-production.up.railway.app/run",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ code }),
+              }
+            );
 
             const data = await res.json();
+
             if (data.output) setOutput(data.output);
+
             if (data.error) {
               setError(
                 `❌ Line ${data.error.line}\n→ ${data.error.gez_code}\n\n${data.error.message}`
               );
             }
-          } catch {
+          } catch (err) {
             setError("❌ Backend not reachable");
           }
         }}
