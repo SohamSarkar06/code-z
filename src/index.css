@@ -1,0 +1,268 @@
+/* ================== GLOBAL ================== */
+* {
+  box-sizing: border-box;
+  font-family: Consolas, monospace;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #1e1b4b, #020617);
+  color: #e5e7eb;
+  overflow: hidden;
+}
+
+/* ================== HEADER ================== */
+header {
+  height: 8vh;
+  min-height: 56px;
+  max-height: 90px;
+  padding: 1px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-image: url("https://i.postimg.cc/sDJ7cmML/Picsart-26-01-01-03-04-05-804.jpg");
+  background-size: cover;
+  background-position: center;
+
+  color: #020617;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.3);
+}
+
+.header-left img {
+  height: 155px;
+  padding-top: 5px;
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.35));
+}
+
+.header-right {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  opacity: 0.95;
+  max-width: 55%;
+  color: #0c0c0c;
+}
+
+/* ================== LAYOUT ================== */
+.container {
+  display: flex;
+  height: calc(100vh - 8vh);
+}
+
+/* ================== EXAMPLES PANEL ================== */
+.examples {
+  width: 270px;
+  min-width: 270px;
+  padding: 16px;
+
+  background: linear-gradient(180deg, #020617, #020617cc);
+  border-right: 3px solid #a855f7;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  position: relative;
+  transition: width 0.35s ease, opacity 0.25s ease;
+  scrollbar-gutter: stable;
+}
+
+/* Scrollbar (panel) */
+.examples::-webkit-scrollbar {
+  width: 8px;
+}
+
+.examples::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #22d3ee, #a855f7);
+  border-radius: 10px;
+}
+
+/* Hide panel */
+.examples.hide {
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  opacity: 0;
+  overflow: hidden;
+  border-right: none;
+}
+.examples.hide ~ .examples-toggle {
+  left: 0;                 /* 🔥 stays visible when panel hidden */
+}
+
+
+/* Toggle button (ALWAYS visible) */
+.examples-toggle {
+  position: fixed;          /* 🔥 KEY FIX */
+  top: 50%;
+  left: 270px;              /* aligns with examples panel edge */
+
+  transform: translateY(-50%);
+  z-index: 999;
+
+  width: 5px;
+  height: 64px;
+
+  border-radius: 0 8px 8px 0;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(180deg, #22d3ee, #a855f7);
+  color: #020617;
+  font-weight: 900;
+  font-size: 16px;
+
+  box-shadow: 0 0 15px rgba(34,211,238,0.6);
+}
+
+.examples,
+.examples * {
+  box-sizing: border-box;
+}
+/* ================== EXAMPLE CARDS ================== */
+.examples h2 {
+  text-align: center;
+  color: #22d3ee;
+  margin-bottom: 14px;
+  text-shadow: 0 0 10px rgba(34,211,238,0.6);
+}
+
+.examples pre {
+  background-image: url("https://i.postimg.cc/SR7TVqh8/Picsart-26-01-01-02-27-35-885.jpg");
+  background-size: cover;
+  background-position: center;
+
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+
+  font-size: 14px;
+  line-height: 1.8;
+
+    white-space: pre-line;   /* 🔥 FIX: React + HTML compatible */
+
+  overflow-y: auto;
+  overflow-x: auto;
+
+  max-height: 260px;        /* 🔥 CARD SCROLL THRESHOLD */
+  max-width: 100%;
+
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    inset 0 0 0 1px rgba(168,85,247,0.15),
+    0 8px 22px rgba(0,0,0,0.35);
+}
+
+/* Card scrollbar */
+.examples pre::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.examples pre::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #22d3ee, #a855f7);
+  border-radius: 10px;
+}
+
+/* ================== SYNTAX COLORS ================== */
+.kw { color: #f472b6; text-shadow: 0 0 6px rgba(244,114,182,0.6); }
+.fn { color: #22d3ee; text-shadow: 0 0 6px rgba(34,211,238,0.6); }
+.bool { color: #facc15; text-shadow: 0 0 6px rgba(250,204,21,0.6); }
+.num { color: #a78bfa; }
+.str { color: #6ee7b7; }
+.cm  { color: #94a3b8; font-style: italic; }
+
+/* ================== WORKSPACE ================== */
+.workspace {
+  flex: 1;
+  display: flex;
+  transition: width 0.35s ease;
+}
+
+.workspace.expanded {
+  width: 100%;
+}
+
+/* ================== EDITOR ================== */
+.editor {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-wrapper {
+  flex: 1;
+  display: flex;
+  border-radius: 16px;
+  overflow: hidden;
+
+  background: linear-gradient(145deg, #020617, #0b1020);
+  box-shadow:
+    inset 0 0 0 3px #22d3ee,
+    0 0 25px rgba(34,211,238,0.25);
+}
+
+/* ================== LINE NUMBERS ================== */
+.gutter {
+  background: #020617;
+  color: #6b7280;
+  padding: 14px 10px;
+  text-align: right;
+  user-select: none;
+  white-space: pre;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ================== TEXTAREA ================== */
+#code {
+  flex: 1;
+  padding: 14px;
+  background-image: url("https://i.postimg.cc/JhNpRMsf/file-0000000037f47206a095d67a67669a08.png");
+  background-size: cover;
+  background-position: center;
+
+  color: #e6e6e6;
+  border: none;
+  outline: none;
+  resize: none;
+
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre;
+}
+
+/* ================== BUTTON ================== */
+button {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #020617;
+
+  background: linear-gradient(135deg,#3e2d71, #d6e2e4, #22d3ee);
+  box-shadow:
+    0 10px 25px rgba(168,85,247,0.4),
+    inset 0 0 0 2px rgba(255,255,255,0.2);
+}
+
+/* ================== TERMINAL ================== */
+.terminal {
+  width: 35%;
+  padding: 15px;
+  background-image: url("https://i.postimg.cc/W41d17zq/a11bca793bfebe1b1352029fc8de96ab.jpg");
+  background-size: cover;
+  background-position: center;
+  border-left: 3px solid #22d3ee;
+}
+
+.terminal h3 {
+  color: #facc15;
+  text-shadow: 0 0 6px rgba(250,204,21,0.6);
+}
